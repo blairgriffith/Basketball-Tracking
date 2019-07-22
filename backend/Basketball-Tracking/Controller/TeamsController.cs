@@ -12,56 +12,56 @@ namespace BasketballTracking.Controller
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ConferencesController : ControllerBase
+    public class TeamsController : ControllerBase
     {
         private readonly SiteContext _context;
 
-        public ConferencesController(SiteContext context)
+        public TeamsController(SiteContext context)
         {
             _context = context;
         }
 
-        // GET: api/Conferences
+        // GET: api/Teams
         [HttpGet]
-        public IEnumerable<Conference> GetConferences()
+        public IEnumerable<Team> GetTeams()
         {
-            return _context.Conferences;
+            return _context.Teams;
         }
 
-        // GET: api/Conferences/5
+        // GET: api/Teams/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetConference([FromRoute] int id)
+        public async Task<IActionResult> GetTeam([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var conference = await _context.Conferences.FindAsync(id);
+            var team = await _context.Teams.FindAsync(id);
 
-            if (conference == null)
+            if (team == null)
             {
                 return NotFound();
             }
 
-            return Ok(conference);
+            return Ok(team);
         }
 
-        // PUT: api/Conferences/5
+        // PUT: api/Teams/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutConference([FromRoute] int id, [FromBody] Conference conference)
+        public async Task<IActionResult> PutTeam([FromRoute] int id, [FromBody] Team team)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != conference.ConferenceId)
+            if (id != team.TeamId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(conference).State = EntityState.Modified;
+            _context.Entry(team).State = EntityState.Modified;
 
             try
             {
@@ -69,7 +69,7 @@ namespace BasketballTracking.Controller
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ConferenceExists(id))
+                if (!TeamExists(id))
                 {
                     return NotFound();
                 }
@@ -82,45 +82,45 @@ namespace BasketballTracking.Controller
             return NoContent();
         }
 
-        // POST: api/Conferences
+        // POST: api/Teams
         [HttpPost]
-        public async Task<IActionResult> PostConference([FromBody] Conference conference)
+        public async Task<IActionResult> PostTeam([FromBody] Team team)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Conferences.Add(conference);
+            _context.Teams.Add(team);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetConference", new { id = conference.ConferenceId }, conference);
+            return CreatedAtAction("GetTeam", new { id = team.TeamId }, team);
         }
 
-        // DELETE: api/Conferences/5
+        // DELETE: api/Teams/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteConference([FromRoute] int id)
+        public async Task<IActionResult> DeleteTeam([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var conference = await _context.Conferences.FindAsync(id);
-            if (conference == null)
+            var team = await _context.Teams.FindAsync(id);
+            if (team == null)
             {
                 return NotFound();
             }
 
-            _context.Conferences.Remove(conference);
+            _context.Teams.Remove(team);
             await _context.SaveChangesAsync();
 
-            return Ok(conference);
+            return Ok(team);
         }
 
-        private bool ConferenceExists(int id)
+        private bool TeamExists(int id)
         {
-            return _context.Conferences.Any(e => e.ConferenceId == id);
+            return _context.Teams.Any(e => e.TeamId == id);
         }
     }
 }

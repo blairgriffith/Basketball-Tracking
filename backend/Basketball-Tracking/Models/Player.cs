@@ -9,5 +9,7 @@ namespace BasketballTracking.Models
     {
         public int PlayerId { get; set; }
         public string Name { get; set; }
+
+        public virtual int TeamId { get; set; }
     }
 }
