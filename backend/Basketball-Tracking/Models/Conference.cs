@@ -9,6 +9,7 @@ namespace BasketballTracking.Models
     {
         public int ConferenceId { get; set; }
         public string Name { get; set; }
+        public string ImageURL { get; set; }
 
         public virtual List<Team> Teams { get; set; }
     }
