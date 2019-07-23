@@ -10,6 +10,7 @@ namespace BasketballTracking.Models
         public int TeamId { get; set; }
         public string Name { get; set; }
         public string Location { get; set; }
+        public string ImageURL { get; set; }
 
         public virtual List<Player> Players { get; set; }
 
