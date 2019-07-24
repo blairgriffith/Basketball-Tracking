@@ -8,8 +8,7 @@ export default function Confrences(allconf){
             <li>
                 <p>${conference.name}</p>
                 <img src="${confrence.ImageURL}>
-                <input class='select-conference__id' type='hidden' value="${conference.conferenceID}">
-                <button class='select-conferenceId__select'>Select Conference</button>  
+                <input class='select-album__id' type='hidden' value="${conference.conferenceId}">
             
             </li>
             `;
