@@ -3,11 +3,13 @@ import SingleConf from "./component/SingleConf";
 import AllTeams from "./component/AllTeams";
 import SingleTeam from "./component/SingleTeam";
 import Player from "./component/Player";
+import ApiAction from "./api/api-actions";
 
 pageBuild();
 
 function pageBuild(){
     home();
+    player();
 }
 
 function home(){
@@ -20,11 +22,10 @@ function home(){
     });
 
     document.querySelector('#app').addEventListener("click", function() {
-        if (event.target.classList.contains("select-albumId__select")) {
-        const albumId = event.target.parentElement.querySelector(".select-album__id")
+        if (event.target.classList.contains("select-conferenceId__select")) {
+        const conferenceId = event.target.parentElement.querySelector(".select-conference__id")
             .value;
-            console.log(albumId)
-        ApiAction.getRequest("https://localhost:44315/api/conferences/"+ conferenceName,
+        ApiAction.getRequest("https://localhost:44315/api/conferences",
             conferences => {
                 document.querySelector('#app').innerHTML = Conference(conferences);
         },           
