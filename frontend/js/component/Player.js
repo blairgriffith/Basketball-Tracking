@@ -6,7 +6,7 @@ export default function Players(playerlist){
         return `
             <li>
                 <p>${player.playerId}</p>
-                <img src="${player.ImageURL}>
+                <img src="${player.ImageURL}">
             </li>
             `
         })}

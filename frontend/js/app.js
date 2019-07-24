@@ -12,6 +12,8 @@ function pageBuild(){
     home();
     player();
     conferences();
+    allTeams();
+
 }
 
 function home(){
@@ -32,12 +34,34 @@ function conferences(){
     })
 
     document.querySelector('#app').addEventListener("click", function() {
-        if (event.target.classList.contains("select-conferenceId__select")) {
-        const conferenceId = event.target.parentElement.querySelector(".select-conference__id")
-            .value;
+        if (event.target.classList.contains("select-conference")) {
+        const conferenceId = event.target.parentElement.querySelector(".select-conference__id").value;
+        console.log(conferenceId)
         ApiAction.getRequest("https://localhost:44315/api/conferences/"+ conferenceId,
-            allconf => {
-                document.querySelector('#app').innerHTML = Conferences(allconf);
+            conf => {
+                document.querySelector('#app').innerHTML = SingleConf(conf);
+        },           
+        );
+    }
+  });
+};
+
+function allTeams(){
+    const app = document.getElementById('app');
+    const teams= document.getElementById('nav__Teams');
+    teams.addEventListener('click', function(){
+        ApiAction.getRequest("https://localhost:44315/api/teams", teams => {
+            app.innerHTML = AllTeams(teams);
+        })
+    })
+
+    document.querySelector('#app').addEventListener("click", function() {
+        if (event.target.classList.contains("select-teamId__select")) {
+        const teamId = event.target.parentElement.querySelector(".select-team__id")
+            .value;
+        ApiAction.getRequest("https://localhost:44315/api/teams/"+ teamId,
+            teams => {
+                document.querySelector('#app').innerHTML = SingleTeam(teams);
         },           
         );
     }

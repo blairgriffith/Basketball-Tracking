@@ -1,4 +1,4 @@
-export default function Confrences(allconf){
+export default function Conferences(allconf){
     return `
     
     <h1>Choose a Conference</h1>
@@ -7,8 +7,8 @@ export default function Confrences(allconf){
         return `
             <li>
                 <p>${conference.name}</p>
-                <img src="${confrence.ImageURL}>
-                <input class='select-album__id' type='hidden' value="${conference.conferenceId}">
+                <img class='select-conference' src="${conference.imageURL}">
+                <input class='select-conference__id' type='hidden' value="${conference.conferenceId}">
             
             </li>
             `;
