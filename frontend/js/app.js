@@ -13,6 +13,7 @@ function pageBuild(){
     player();
     conferences();
     allTeams();
+    singleConf();
 
 }
 
@@ -36,7 +37,6 @@ function conferences(){
     document.querySelector('#app').addEventListener("click", function() {
         if (event.target.classList.contains("select-conference")) {
         const conferenceId = event.target.parentElement.querySelector(".select-conference__id").value;
-        console.log(conferenceId)
         ApiAction.getRequest("https://localhost:44315/api/conferences/"+ conferenceId,
             conf => {
                 document.querySelector('#app').innerHTML = SingleConf(conf);
@@ -44,6 +44,7 @@ function conferences(){
         );
     }
   });
+
 };
 
 function allTeams(){
@@ -67,6 +68,65 @@ function allTeams(){
     }
   });
 };
+
+function singleConf(){
+        document.querySelector('#app').addEventListener("click", function(){
+        if(event.target.classList.contains('add-team_submit')){
+            const team = event.target.parentElement.querySelector('.add-team_name').value;
+            const teamimage = event.target.parentElement.querySelector('.add-team_imageUrl').value;
+            const conferenceId = event.target.parentElement.querySelector('.add-team_conferenceId').value;
+            const data = {
+                teamId: 0,
+                teamName: team,
+                imageUrl: teamimage,
+                conferenceId: conferenceId
+            }
+            ApiAction.postRequest("https://localhost:44378/api/teams", data, conference => {
+                document.querySelector('#app').innerHTML = SingleConf(conference);
+            })
+        }
+    })
+
+    
+      document.querySelector('#app').addEventListener("click", function() {
+        if (event.target.classList.contains("delete-teamId__delete")) {
+          const team = event.target.parentElement.querySelector(".delete-team__id")
+            .value;
+          ApiAction.deleteRequest("https://localhost:44378/api/teams/"+ team,team,
+            teams => {
+                document.querySelector('#app').innerHTML = Teams(teams);
+            },           
+            );
+        }
+      });
+
+      document.querySelector('#app').addEventListener("click", function(){
+        if(event.target.classList.contains('edit-team_submit')){
+            const team = event.target.parentElement.querySelector('.edit-team__teamId').value;
+            // const teamimage = event.target.parentElement.querySelector('.edit-team_teamimage').value;
+            const name = event.target.parentElement.querySelector('.edit-team_name').value;
+            const data = {
+                teamId: team,
+                teamName: name,
+                // ImageUrl: teamimage
+            }
+            ApiAction.putRequest("https://localhost:44378/api/teams/"+ team, data, teamlist => {
+                document.querySelector('#app').innerHTML = Teams(teamlist);
+            })
+        }
+    })
+    document.querySelector('#app').addEventListener("click", function() {
+        if (event.target.classList.contains("select-teamId__select")) {
+        const teamId = event.target.parentElement.querySelector(".select-team__id")
+            .value;
+        ApiAction.getRequest("https://localhost:44315/api/teams/"+ teamId,
+            teams => {
+                document.querySelector('#app').innerHTML = SingleTeam(teams);
+        },           
+        );
+    }
+  });
+}
 
 function player(){
     const app = document.getElementById('app');

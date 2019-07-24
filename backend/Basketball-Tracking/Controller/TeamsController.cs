@@ -49,7 +49,7 @@ namespace BasketballTracking.Controller
 
         // PUT: api/Teams/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTeam([FromRoute] int id, [FromBody] Team team)
+        public async Task<ActionResult<Conference>> PutTeam([FromRoute] int id, [FromBody] Team team)
         {
             if (!ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace BasketballTracking.Controller
                 }
             }
 
-            return NoContent();
+            return _context.Conferences.Single(c => c.ConferenceId == team.ConferenceId);
         }
 
         // POST: api/Teams
