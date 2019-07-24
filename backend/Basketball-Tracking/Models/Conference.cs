@@ -12,6 +12,5 @@ namespace BasketballTracking.Models
         public string ImageURL { get; set; }
 
         public virtual List<Team> Teams { get; set; }
-        public virtual int PlayerId { get; set; }
     }
 }
