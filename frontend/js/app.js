@@ -14,10 +14,23 @@ function home(){
     const app = document.getElementById('app');
     const home = document.getElementById('nav__Home');
     home.addEventListener('click', function(){
-        app.innerHTML = Home();
+        ApiAction.getRequest("https://localhost:44315/api/conferences", conferences => {
+            app.innerHTML = Home(conferences);
     })
+    });
 
-    document
+    document.querySelector('#app').addEventListener("click", function() {
+        if (event.target.classList.contains("select-albumId__select")) {
+        const albumId = event.target.parentElement.querySelector(".select-album__id")
+            .value;
+            console.log(albumId)
+        ApiAction.getRequest("https://localhost:44315/api/conferences/"+ conferenceName,
+            conferences => {
+                document.querySelector('#app').innerHTML = Conference(conferences);
+        },           
+        );
+    }
+  });
 };
 
 function player(){

@@ -8,7 +8,8 @@ export default function Home(conferences){
             <li>
                 <p>${conference.name}</p>
                 <img src="${confrence.ImageURL}>
-            
+                <input class='select-conference__name' type='hidden' value="${conference.name}">
+                <button class='select-conferenceName__select'>Select Conference</button>  
             
             </li>
             `;
