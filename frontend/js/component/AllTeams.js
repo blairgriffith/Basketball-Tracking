@@ -7,7 +7,7 @@ export default function AllTeams(teams){
         return `
             <li>
                 <p>${team.name}</p>
-                <img id='select-teamId__select' src="${team.imageURL}">
+                <img class='select-teamId__select' src="${team.imageURL}">
                 <input class='select-team__id' type='hidden' value="${team.teamId}">
             
             </li>

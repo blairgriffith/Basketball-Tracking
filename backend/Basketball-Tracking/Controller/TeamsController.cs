@@ -84,7 +84,7 @@ namespace BasketballTracking.Controller
 
         // POST: api/Teams
         [HttpPost]
-        public async Task<IActionResult> PostTeam([FromBody] Team team)
+        public async Task<ActionResult<Conference>> PostTeam([FromBody] Team team)
         {
             if (!ModelState.IsValid)
             {
@@ -94,12 +94,12 @@ namespace BasketballTracking.Controller
             _context.Teams.Add(team);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTeam", new { id = team.TeamId }, team);
+            return _context.Conferences.Single(c => c.ConferenceId == team.ConferenceId);
         }
 
         // DELETE: api/Teams/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTeam([FromRoute] int id)
+        public async Task<ActionResult<Conference>> DeleteTeam([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
@@ -115,7 +115,7 @@ namespace BasketballTracking.Controller
             _context.Teams.Remove(team);
             await _context.SaveChangesAsync();
 
-            return Ok(team);
+            return _context.Conferences.Single(c => c.ConferenceId == team.ConferenceId);
         }
 
         private bool TeamExists(int id)

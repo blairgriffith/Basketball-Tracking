@@ -14,7 +14,7 @@ function pageBuild(){
     conferences();
     allTeams();
     singleConf();
-
+    singleTeam();
 }
 
 function home(){
@@ -58,71 +58,158 @@ function allTeams(){
 
     document.querySelector('#app').addEventListener("click", function() {
         if (event.target.classList.contains("select-teamId__select")) {
-        const teamId = event.target.parentElement.querySelector(".select-team__id")
-            .value;
+        const teamId = event.target.parentElement.querySelector(".select-team__id").value;
+
         ApiAction.getRequest("https://localhost:44315/api/teams/"+ teamId,
-            teams => {
-                document.querySelector('#app').innerHTML = SingleTeam(teams);
-        },           
+            team => {
+                document.querySelector('#app').innerHTML = SingleTeam(team);
+            },           
         );
     }
   });
 };
 
-function singleConf(){
-        document.querySelector('#app').addEventListener("click", function(){
-        if(event.target.classList.contains('add-team_submit')){
-            const team = event.target.parentElement.querySelector('.add-team_name').value;
-            const teamimage = event.target.parentElement.querySelector('.add-team_imageUrl').value;
-            const conferenceId = event.target.parentElement.querySelector('.add-team_conferenceId').value;
+function singleTeam(){
+    document.querySelector('#app').addEventListener("click", function(){
+        if(event.target.classList.contains('add-player_submit')){
+            const location = event.target.parentElement.querySelector('.add-player_location').value;
+            const playerName = event.target.parentElement.querySelector('.add-player_name').value;
+            const playerimage = event.target.parentElement.querySelector('.add-player_imageUrl').value;
+            const teamId = event.target.parentElement.querySelector('.add-player_teamId').value;
+
             const data = {
-                teamId: 0,
-                teamName: team,
-                imageUrl: teamimage,
-                conferenceId: conferenceId
+                playerId: 0,
+                location: location,
+                Name: playerName,
+                imageUrl: playerimage,
+                teamId: teamId
             }
-            ApiAction.postRequest("https://localhost:44378/api/teams", data, conference => {
-                document.querySelector('#app').innerHTML = SingleConf(conference);
+            
+        ApiAction.postRequest("https://localhost:44315/api/players", data, team => {
+            document.querySelector('#app').innerHTML = SingleTeam(team);
+        })
+        }
+    })
+
+    
+    document.querySelector('#app').addEventListener("click", function() {
+        if (event.target.classList.contains("delete-playerId__delete")) {
+
+            const playerId = event.target.parentElement.querySelector(".delete-player__id").value;
+            const teamId = event.target.parentElement.querySelector('.delete-player__teamId')
+            
+            const data = {
+                playerId: playerId,
+                teamId: teamId
+            }
+
+          ApiAction.deleteRequest("https://localhost:44315/api/players/"+ playerId, data,
+            team => {
+                document.querySelector('#app').innerHTML = SingleTeam(team);
+            },           
+            );
+        }
+    });
+
+    document.querySelector('#app').addEventListener("click", function(){
+        if(event.target.classList.contains('edit-player_submit')){
+
+            const playerId = event.target.parentElement.querySelector('.edit-player_playerId').value;            
+            const location = event.target.parentElement.querySelector('.edit-player_location').value;
+            const playerName = event.target.parentElement.querySelector('.edit-player_name').value;
+            const playerimage = event.target.parentElement.querySelector('.edit-player_imageUrl').value;
+            const teamId = event.target.parentElement.querySelector('.edit-player_teamId').value;
+
+            const data = {
+                playerId: playerId,
+                location: location,
+                name: playerName,
+                imageUrl: playerimage,
+                teamId: teamId
+            }
+
+            ApiAction.putRequest("https://localhost:44315/api/players/"+ playerId, data, team => {
+                document.querySelector('#app').innerHTML = SingleTeam(team);
             })
         }
     })
 
     
-      document.querySelector('#app').addEventListener("click", function() {
+}
+
+function singleConf(){
+    document.querySelector('#app').addEventListener("click", function(){
+        if(event.target.classList.contains('add-team_submit')){
+            const location = event.target.parentElement.querySelector('.add-team_location').value;
+            const teamName = event.target.parentElement.querySelector('.add-team_name').value;
+            const teamimage = event.target.parentElement.querySelector('.add-team_imageUrl').value;
+            const conferenceId = event.target.parentElement.querySelector('.add-team_conferenceId').value;
+
+            const data = {
+                teamId: 0,
+                location: location,
+                Name: teamName,
+                imageUrl: teamimage,
+                conferenceId: conferenceId
+            }
+            
+        ApiAction.postRequest("https://localhost:44315/api/teams", data, conference => {
+            document.querySelector('#app').innerHTML = SingleConf(conference);
+        })
+        }
+    })
+
+    
+    document.querySelector('#app').addEventListener("click", function() {
         if (event.target.classList.contains("delete-teamId__delete")) {
-          const team = event.target.parentElement.querySelector(".delete-team__id")
-            .value;
-          ApiAction.deleteRequest("https://localhost:44378/api/teams/"+ team,team,
-            teams => {
-                document.querySelector('#app').innerHTML = Teams(teams);
+
+            const teamId = event.target.parentElement.querySelector(".delete-team__id").value;
+            const conferenceId = event.target.parentElement.querySelector('.delete-team__conferenceId')
+            
+            const data = {
+                teamId: teamId,
+                conferenceId: conferenceId
+            }
+
+          ApiAction.deleteRequest("https://localhost:44315/api/teams/"+ teamId, data,
+            conference => {
+                document.querySelector('#app').innerHTML = SingleConf(conference);
             },           
             );
         }
-      });
+    });
 
-      document.querySelector('#app').addEventListener("click", function(){
+    document.querySelector('#app').addEventListener("click", function(){
         if(event.target.classList.contains('edit-team_submit')){
-            const team = event.target.parentElement.querySelector('.edit-team__teamId').value;
-            // const teamimage = event.target.parentElement.querySelector('.edit-team_teamimage').value;
-            const name = event.target.parentElement.querySelector('.edit-team_name').value;
+
+            const teamId = event.target.parentElement.querySelector('.edit-team_teamId').value;            
+            const location = event.target.parentElement.querySelector('.edit-team_location').value;
+            const teamName = event.target.parentElement.querySelector('.edit-team_name').value;
+            const teamimage = event.target.parentElement.querySelector('.edit-team_imageUrl').value;
+            const conferenceId = event.target.parentElement.querySelector('.edit-team_conferenceId').value;
+
             const data = {
-                teamId: team,
-                teamName: name,
-                // ImageUrl: teamimage
+                teamId: teamId,
+                location: location,
+                name: teamName,
+                imageUrl: teamimage,
+                conferenceId: conferenceId
             }
-            ApiAction.putRequest("https://localhost:44378/api/teams/"+ team, data, teamlist => {
-                document.querySelector('#app').innerHTML = Teams(teamlist);
+
+            ApiAction.putRequest("https://localhost:44315/api/teams/"+ teamId, data, conference => {
+                document.querySelector('#app').innerHTML = SingleConf(conference);
             })
         }
     })
+
     document.querySelector('#app').addEventListener("click", function() {
-        if (event.target.classList.contains("select-teamId__select")) {
-        const teamId = event.target.parentElement.querySelector(".select-team__id")
+        if (event.target.classList.contains("select-playerId__select")) {
+        const teamId = event.target.parentElement.querySelector(".select-player__id")
             .value;
         ApiAction.getRequest("https://localhost:44315/api/teams/"+ teamId,
             teams => {
                 document.querySelector('#app').innerHTML = SingleTeam(teams);
-        },           
+            },           
         );
     }
   });
