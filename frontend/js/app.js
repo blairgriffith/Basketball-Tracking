@@ -3,7 +3,7 @@ import Conferences from "./component/Conferences"
 import SingleConf from "./component/SingleConf";
 import AllTeams from "./component/AllTeams";
 import SingleTeam from "./component/SingleTeam";
-import Player from "./component/Player";
+import Player from "./component/Players";
 import ApiAction from "./api/api-actions";
 
 pageBuild();
@@ -15,6 +15,7 @@ function pageBuild(){
     allTeams();
     singleConf();
     singleTeam();
+    editbox();
 }
 
 function home(){
@@ -72,7 +73,6 @@ function allTeams(){
 function singleTeam(){
     document.querySelector('#app').addEventListener("click", function(){
         if(event.target.classList.contains('add-player_submit')){
-            const location = event.target.parentElement.querySelector('.add-player_location').value;
             const playerName = event.target.parentElement.querySelector('.add-player_name').value;
             const playerimage = event.target.parentElement.querySelector('.add-player_imageUrl').value;
             const teamId = event.target.parentElement.querySelector('.add-player_teamId').value;
@@ -115,14 +115,12 @@ function singleTeam(){
         if(event.target.classList.contains('edit-player_submit')){
 
             const playerId = event.target.parentElement.querySelector('.edit-player_playerId').value;            
-            const location = event.target.parentElement.querySelector('.edit-player_location').value;
             const playerName = event.target.parentElement.querySelector('.edit-player_name').value;
             const playerimage = event.target.parentElement.querySelector('.edit-player_imageUrl').value;
             const teamId = event.target.parentElement.querySelector('.edit-player_teamId').value;
 
             const data = {
                 playerId: playerId,
-                location: location,
                 name: playerName,
                 imageUrl: playerimage,
                 teamId: teamId
@@ -219,4 +217,18 @@ function player(){
     const app = document.getElementById('app');
     const player = document.getElementById('nav__Player');
 
+}
+
+function editbox(){
+    document.querySelector('#app').addEventListener('click', function(){
+        if(event.target.classList.contains('edit-item')){
+            const editbox = event.target.parentElement.querySelector('.edit-box')
+            
+            if (editbox.style.display == "block") {
+                editbox.style.display = "none";
+            } else {
+                editbox.style.display = "block";
+            }
+        }
+    })
 }

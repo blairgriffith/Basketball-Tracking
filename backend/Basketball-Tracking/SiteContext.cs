@@ -85,7 +85,7 @@ namespace BasketballTracking
                 {
                     TeamId = 5,
                     Name = "Warriors",
-                    Location = "San Francisco",
+                    Location = "Golden State",
                     ImageURL = "https://stats.nba.com/media/img/teams/logos/GSW_logo.svg",
 
                     ConferenceId = 2

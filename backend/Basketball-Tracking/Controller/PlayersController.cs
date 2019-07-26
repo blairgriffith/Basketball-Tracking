@@ -49,7 +49,7 @@ namespace BasketballTracking.Controller
 
         // PUT: api/Players/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPlayer([FromRoute] int id, [FromBody] Player player)
+        public async Task<ActionResult<Team>> PutPlayer([FromRoute] int id, [FromBody] Player player)
         {
             if (!ModelState.IsValid)
             {
@@ -79,12 +79,12 @@ namespace BasketballTracking.Controller
                 }
             }
 
-            return NoContent();
+            return _context.Teams.Single(t => t.TeamId == player.TeamId);
         }
 
         // POST: api/Players
         [HttpPost]
-        public async Task<IActionResult> PostPlayer([FromBody] Player player)
+        public async Task<ActionResult<Team>> PostPlayer([FromBody] Player player)
         {
             if (!ModelState.IsValid)
             {
@@ -94,12 +94,12 @@ namespace BasketballTracking.Controller
             _context.Players.Add(player);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPlayer", new { id = player.PlayerId }, player);
+            return _context.Teams.Single(t => t.TeamId == player.TeamId);
         }
 
         // DELETE: api/Players/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePlayer([FromRoute] int id)
+        public async Task<ActionResult<Team>> DeletePlayer([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
@@ -115,7 +115,7 @@ namespace BasketballTracking.Controller
             _context.Players.Remove(player);
             await _context.SaveChangesAsync();
 
-            return Ok(player);
+            return _context.Teams.Single(t => t.TeamId == player.TeamId);
         }
 
         private bool PlayerExists(int id)

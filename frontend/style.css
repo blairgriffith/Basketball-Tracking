@@ -1,3 +1,126 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    color: #111;
+    background-color: #ddd;
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+    nav ul{
+        display: flex;
+        justify-content: space-around;
+        list-style: none;
+    }
+    nav ul li{
+        padding: 1em;
+        width: 25%;
+        text-align: center;
+        color: #ddd;
+        background-color: #111;
+    }
+    nav ul li:hover{
+        cursor: pointer;
+        background: rgb(202, 117, 57);
+    }
+
+body{
+margin-top: 4em;
+}
+    .home-image{
+        width: 50%;
+        margin-left: 25%;
+    }
+
 img{
     width: 200px;
 }
+
+h1{
+    text-align: center;
+}
+
+.main-flex{
+    display: flex;
+    justify-content: space-around;
+}
+    .main-flex li{
+        display: flex;
+        flex-direction: column;
+    }
+        .main-flex li p{
+            margin-top: 0.75em;
+            align-self: center;
+        }
+        .main-flex li img:hover{
+            cursor: pointer;
+        }
+
+.heading{
+    display: grid;
+    margin: 0 auto;
+}
+.heading img{
+    margin: 0 auto;
+}
+
+
+.add-item{
+    display: grid;
+    margin: 0 auto;
+    width: 20%;
+    background-color: #111;
+    padding: 2em;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #999;
+}
+.add-item h3{
+    background-color: #111;
+    color: #ddd;
+}
+
+
+.children{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 2em;
+}
+.child-by-id{
+    display: grid;
+    margin-bottom: 2em;
+}
+.child-by-id img{
+    margin: 0 auto;
+    background-color: #111;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #999;
+}
+.child-by-id p{
+    margin: 0 auto;
+}
+.child-by-id button{
+    background-color: #111;
+    color: #ddd;
+    padding: 0.5em;
+    border-radius: 5px;
+}
+.child-by-id button:hover{
+    background-color: #ddd;
+    color: #111;
+    border-color: #111;
+}
+.child-by-id-input{
+    margin: 0 auto;
+}
+
+.edit-box{
+    display:none;
+}
+
