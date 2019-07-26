@@ -125,3 +125,8 @@ h1{
     display:none;
 }
 
+playerL{
+    display: flex;
+    flex-direction: row;
+}
+

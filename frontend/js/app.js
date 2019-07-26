@@ -3,14 +3,14 @@ import Conferences from "./component/Conferences"
 import SingleConf from "./component/SingleConf";
 import AllTeams from "./component/AllTeams";
 import SingleTeam from "./component/SingleTeam";
-import Player from "./component/Players";
+import Players from "./component/Players";
 import ApiAction from "./api/api-actions";
 
 pageBuild();
 
 function pageBuild(){
     home();
-    player();
+    players();
     conferences();
     allTeams();
     singleConf();
@@ -213,10 +213,14 @@ function singleConf(){
   });
 }
 
-function player(){
+function players(){
     const app = document.getElementById('app');
     const player = document.getElementById('nav__Player');
-
+    player.addEventListener('click', function(){
+        ApiAction.getRequest("https://localhost:44315/api/players", players => {
+            app.innerHTML = Players(players);
+        })
+    })
 }
 
 function editbox(){
