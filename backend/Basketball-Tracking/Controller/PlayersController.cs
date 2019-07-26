@@ -23,9 +23,9 @@ namespace BasketballTracking.Controller
 
         // GET: api/Players
         [HttpGet]
-        public IEnumerable<Player> GetPlayers()
+        public IEnumerable<Team> GetPlayers()
         {
-            return _context.Players;
+            return _context.Teams;
         }
 
         // GET: api/Players/5

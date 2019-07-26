@@ -1,5 +1,9 @@
 export default function SingleConf(conference){
     return `
+    <div class='heading'>
+        <h1>${conference.name}</h1>
+    </div>
+    <br />
     <div class='add-item-container'>
         <div class='add-item'>
             <h3> Add a team </h3> 
@@ -30,9 +34,9 @@ export default function SingleConf(conference){
                         <input class='edit-team_teamId' type='hidden' value="${team.teamId}">
                         <input type="text" class="edit-team_location" value='${team.location}' placeholder="Edit a team location.">
                         <input type="text" class="edit-team_name" value='${team.name}'placeholder="Edit a team name.">
-                        <input type="text" class="edit-team_imageUrl" value='${team.imageUrl}' placeholder="Edit team image.">
+                        <input type="text" class="edit-team_imageUrl" value='${team.imageURL}' placeholder="Edit team image.">
                         <input class='edit-team_conferenceId' type='hidden' value="${team.conferenceId}">
-                        <button class="edit-player_submit">Edit Player</button>
+                        <button class="edit-player_submit">Submit</button>
                     </div>
                 <br />
             </div>                                  

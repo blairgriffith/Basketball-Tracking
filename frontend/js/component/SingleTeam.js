@@ -37,7 +37,7 @@ export default function SingleTeam(team){
                         <input class='edit-player_playerId' type='hidden' value="${player.playerId}">
                         <input type="text" class="edit-player_imageUrl" value='${player.imageURL}' placeholder="Edit player image...">
                         <input class='edit-player_teamId' type='hidden' value="${player.teamId}">
-                        <button class="edit-player_submit">Edit Player</button>
+                        <button class="edit-player_submit">Submit</button>
                     </div>
                 <br />
             </div>                                  
