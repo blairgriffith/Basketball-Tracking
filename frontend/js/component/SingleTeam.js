@@ -25,21 +25,21 @@ export default function SingleTeam(team){
             <p>${player.name}</p>
             <div class='child-by-id-input'>
             
-            <button class="edit-item">Edit Player</button>
-            <button class='delete-playerId__delete'>Delete Player</button>
-            <input class='delete-player__id' type='hidden' value="${player.playerId}">
-            <input class='delete-player__teamId' type='hidden' value='${player.teamId}'>
-                <div class='edit-box'
-                    <span>Name</span> 
-                    <input type="text" class="edit-player_name" value='${player.name}'placeholder="Edit player's name...">
-                    <br />
-                    <span>Image URL</span>
-                    <input class='edit-player_playerId' type='hidden' value="${player.playerId}">
-                    <input type="text" class="edit-player_imageUrl" value='${player.imageURL}' placeholder="Edit player image...">
-                    <input class='edit-player_teamId' type='hidden' value="${player.teamId}">
-                    <button class="edit-player_submit">Edit Player</button>
-                </div>
-            <br />
+                <button class="edit-item">Edit Player</button>
+                <button class='delete-playerId__delete'>Delete Player</button>
+                <input class='delete-player__id' type='hidden' value="${player.playerId}">
+                <input class='delete-player__teamId' type='hidden' value='${player.teamId}'>
+                    <div class='edit-box'
+                        <span>Name</span> 
+                        <input type="text" class="edit-player_name" value='${player.name}'placeholder="Edit player's name...">
+                        <br />
+                        <span>Image URL</span>
+                        <input class='edit-player_playerId' type='hidden' value="${player.playerId}">
+                        <input type="text" class="edit-player_imageUrl" value='${player.imageURL}' placeholder="Edit player image...">
+                        <input class='edit-player_teamId' type='hidden' value="${player.teamId}">
+                        <button class="edit-player_submit">Edit Player</button>
+                    </div>
+                <br />
             </div>                                  
         </div>
             `;
