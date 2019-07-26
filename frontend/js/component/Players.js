@@ -1,15 +1,17 @@
 export default function Players(playerlist){
     return `
     <h1>Players</h1>
-    <ul>
+    <div class='children'>
         ${playerlist.map(players => {
         return `
-            <playerL>
-                <p>${players.playerId}</p>
-                <img src="${players.imageURL}">
-            </playerL>
-            `
-        })}
-    
+            <div class='child-by-id'>
+            <img src="${players.imageURL}">
+            <p>${players.name}</p>
+            </div>
+        `
+        })
+    .join("")}
+        
+    </div>
     `
 }

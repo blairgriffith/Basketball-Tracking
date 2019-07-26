@@ -283,77 +283,99 @@ namespace BasketballTracking
                 new Player
                 {
                     PlayerId = 21,
-                    Name = "",
-                    ImageURL = "",
+                    Name = "Damien Lillard",
+                    ImageURL = "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/203081.png",
 
                     TeamId = 6
                 },
                 new Player
                 {
                     PlayerId = 22,
-                    Name = "",
-                    ImageURL = "",
+                    Name = "Rodney Hood",
+                    ImageURL = "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/203918.png",
 
                     TeamId = 6
                 },
                 new Player
                 {
                     PlayerId = 23,
-                    Name = "",
-                    ImageURL = "",
+                    Name = "Jusuf Nurkic",
+                    ImageURL = "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/203994.png",
 
                     TeamId = 6
                 },
                 new Player
                 {
-                    PlayerId = ,
-                    Name = "",
-                    ImageURL = "",
+                    PlayerId = 24,
+                    Name = "CJ McCollom",
+                    ImageURL = "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/203468.png",
 
-                    TeamId =
+                    TeamId = 6
                 },
                 new Player
                 {
-                    PlayerId = ,
-                    Name = "",
-                    ImageURL = "",
+                    PlayerId = 25,
+                    Name = "Kyle Lowry",
+                    ImageURL = "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/200768.png",
 
-                    TeamId =
+                    TeamId = 7
                 },
                 new Player
                 {
-                    PlayerId = ,
-                    Name = "",
-                    ImageURL = "",
+                    PlayerId = 26,
+                    Name = "Serge Ibaka",
+                    ImageURL = "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/201586.png",
 
-                    TeamId =
+                    TeamId = 7
                 },
                 new Player
                 {
-                    PlayerId = ,
-                    Name = "",
-                    ImageURL = "",
+                    PlayerId = 27,
+                    Name = "Marc Gasol",
+                    ImageURL = "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/201188.png",
 
-                    TeamId =
+                    TeamId = 7
                 },
                 new Player
                 {
-                    PlayerId = ,
-                    Name = "",
-                    ImageURL = "",
+                    PlayerId = 28,
+                    Name = "Fred VanVleet",
+                    ImageURL = "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/1627832.png",
 
-                    TeamId =
+                    TeamId = 7
                 },
                 new Player
                 {
-                    PlayerId = ,
-                    Name = "",
-                    ImageURL = "",
+                    PlayerId = 29,
+                    Name = "Paul George",
+                    ImageURL = "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/202331.png",
 
-                    TeamId =
+                    TeamId = 8
                 },
+                new Player
+                {
+                    PlayerId = 30,
+                    Name = "Kawhi Leonard",
+                    ImageURL = "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/202695.png",
 
+                    TeamId = 8
+                },
+                new Player
+                {
+                    PlayerId = 31,
+                    Name = "Lou Williams",
+                    ImageURL = "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/101150.png",
 
+                    TeamId = 8
+                },
+                new Player
+                {
+                    PlayerId = 32,
+                    Name = "Patrick Beverly",
+                    ImageURL = "https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/201976.png",
+
+                    TeamId = 8
+                }
                 );
         }
     }

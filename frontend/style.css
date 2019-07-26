@@ -49,6 +49,7 @@ h1{
 .main-flex{
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
     .main-flex li{
         display: flex;
@@ -124,9 +125,3 @@ h1{
 .edit-box{
     display:none;
 }
-
-playerL{
-    display: flex;
-    flex-direction: row;
-}
-

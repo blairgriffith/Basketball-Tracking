@@ -16,10 +16,12 @@ function pageBuild(){
     singleConf();
     singleTeam();
     editbox();
+    
 }
 
 function home(){
     const app = document.getElementById('app');
+    app.innerHTML = Home();
     const home = document.getElementById('nav__Home');
     home.addEventListener('click', function(){
         app.innerHTML = Home();
